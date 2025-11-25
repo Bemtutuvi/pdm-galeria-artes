@@ -43,7 +43,7 @@ async function addData() {
     showResult("Preencha todos os campos antes de salvar!");
     return;
   }
-  
+
   if (!imagem || imagem === "//:0") {
     showResult("Tire uma foto antes de salvar!");
     return;
@@ -66,12 +66,43 @@ async function getData() {
   const store = tx.objectStore("obras");
   const values = await store.getAll();
 
+  const listaObras = document.getElementById("listaObras");
+  listaObras.innerHTML = "";
+
   if (values.length > 0) {
-    showResult("Dados do banco:<br>" + JSON.stringify(values));
+    values.forEach((obra) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <strong>${obra.nome}</strong> - ${obra.autor} (${obra.tipo}) - ${obra.data}
+        <br>
+        <img src="${obra.imagem}" alt="${obra.nome}" style="max-width: 200px; margin: 10px 0;">
+        <br>
+        <button onclick="deleteObra('${obra.nome}')">Deletar</button>
+      `;
+      listaObras.appendChild(li);
+    });
+    showResult(`${values.length} obra(s) encontrada(s)`);
   } else {
     showResult("Não há nenhuma obra no banco!");
   }
 }
+
+async function deleteData(nome) {
+  if (!db) {
+    showResult("O banco de dados está fechado!");
+    return;
+  }
+
+  const tx = await db.transaction("obras", "readwrite");
+  const store = tx.objectStore("obras");
+  await store.delete(nome);
+  await tx.done;
+  showResult(`Obra "${nome}" deletada com sucesso!`);
+  getData(); // Atualiza a lista
+}
+
+// Expor função deleteData globalmente para uso no onclick
+window.deleteObra = deleteData;
 
 function showResult(text) {
   document.querySelector("output").innerHTML = text;

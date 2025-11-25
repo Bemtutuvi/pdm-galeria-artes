@@ -32,6 +32,9 @@ function cameraStart() {
     })
     .catch(function (error) {
       console.error("Ocorreu um Erro.", error);
+      alert(
+        "Não foi possível acessar a câmera. Verifique as permissões do navegador."
+      );
     });
 }
 
