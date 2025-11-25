@@ -1,64 +1,147 @@
-body {
-  font-family: sans-serif;
-}
-
-html,
-.fullscreen {
-  display: flex;
-  height: 100%;
+/* ======== Reset básico ======== */
+* {
   margin: 0;
   padding: 0;
-  width: 100%;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
+/* ======== Fundo ======== */
+body {
+  background: linear-gradient(135deg, #ff9cee, #b38bff, #d4a5ff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 0;
+  color: #4a235a;
+}
+
+/* ======== Container geral ======== */
 .container {
-  margin: auto;
+  width: 95%;
+  max-width: 900px;
+  background: #ffffffbb;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 0 20px #ffffff55, 0 0 40px #00000022 inset;
 }
 
-.title {
-  font-size: 3rem;
+/* ======== Cabeçalho ======== */
+header {
+  background: linear-gradient(90deg, #d44dff, #ff7bdd);
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px #ffb3f8;
   text-align: center;
 }
 
-#camera,
-#camera--view,
-#camera--sensor,
-#camera--output {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+header h1 {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 10px #00000040;
 }
 
-#camera--view,
-#camera--output,
-#camera--sensor {
-  transform: scaleX(-1);
-  filter: FlipH;
+/* ======== Inputs organizados ======== */
+#formulario {
+  text-align: center;
 }
 
-#camera--sensor {
-  display: none;
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #4e2c6a;
+}
+
+input {
+  width: 80%;
+  max-width: 350px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #c27bff;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background: #ffffffcc;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #ff7bf2;
+  box-shadow: 0 0 10px #ffb3fa;
+}
+
+/* ======== Câmera ======== */
+#camera {
+  margin: 20px auto;
+  text-align: center;
+  padding: 15px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #eecbff, #ffd6fa);
+  border: 3px solid #d44dff;
+  box-shadow: 0 0 20px #cb8eff, inset 0 0 20px #ffffffaa;
+}
+
+#camera video,
+#camera img,
+#camera canvas {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 15px;
+  border: 3px solid #b76bff;
 }
 
 #camera--trigger {
-  width: 200px;
-  background-color: black;
-  color: white;
-  font-size: 16px;
-  border-radius: 30px;
-  border: none;
-  padding: 15px 20px;
-  text-align: center;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 12px;
 }
 
-.taken {
-  height: 100px !important;
-  width: 100px !important;
-  transition: all 0.5s ease-in;
-  border: solid 3px white;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
-  top: 20px;
-  right: 20px;
-  z-index: 2;
+/* ======== Botões ======== */
+#botoes {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0 10px 0;
+}
+
+button {
+  background: linear-gradient(135deg, #d44dff, #ff78d2);
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 5px #00000040;
+  transition: 0.3s;
+  box-shadow: 0 0 10px #ffb7fa;
+}
+
+button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 20px #ffffff;
+}
+
+/* ======== Lista de Obras ======== */
+#resultados {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#listaObras {
+  list-style: none;
+  margin-top: 10px;
+}
+
+#listaObras li {
+  background: #ffffffdd;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 500px;
+  padding: 12px;
+  border-radius: 12px;
+  border-left: 6px solid #d44dff;
+  box-shadow: 0 0 10px #dca8ff;
 }
